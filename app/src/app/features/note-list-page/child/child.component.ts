@@ -18,14 +18,16 @@ import {
     afterRender,
     afterRenderEffect,
     signal,
-    effect, EffectRef
+    effect, EffectRef, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
+import { CommonModule } from "@angular/common";
 
 @Component({
     selector: 'app-child',
-    imports: [],
+    imports: [CommonModule],
     templateUrl: './child.component.html',
-    styleUrl: './child.component.scss'
+    styleUrl: './child.component.scss',
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    AfterContentInit,    AfterContentChecked,    AfterViewInit,    AfterViewChecked,    OnDestroy {
 
@@ -36,7 +38,7 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
     count = signal(0);
     private readonly cleanupEffect: EffectRef;
 
-    constructor() {
+    constructor(private cdr: ChangeDetectorRef,) {
         console.log('1. Constructor called');
 
         // Effect для отслеживания изменений сигнала
@@ -65,6 +67,8 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
     }
 
     ngOnInit() {
+
+        this.cdr.detectChanges();
         console.log('3. ngOnInit - Component initialized');
     }
 
@@ -101,10 +105,5 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
 
     changeInput() {
         this.inputValue += 1;
-    }
-
-    destroyComponent() {
-        // В реальном приложении компонент уничтожается через *ngIf или маршрутизацию
-        console.warn('В реальном приложении компонент уничтожается через *ngIf или маршрутизацию');
     }
 }

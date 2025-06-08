@@ -12,12 +12,14 @@ import { materialImports } from "./shared/material-imports/material-imports";
         RouterLink, RouterOutlet,
         // ...materialImports
     ],
-    // providers: [...materialImports],
+    providers: [...materialImports, HttpClientService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true
 })
 export class AppComponent {
   title = 'app';
-
+    constructor(private httpS: HttpClientService,) {
+        console.log(this.httpS.param = 2);
+    }
 }

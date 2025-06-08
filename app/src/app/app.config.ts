@@ -6,6 +6,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { materialImports } from "./shared/material-imports/material-imports";
 import { HttpClientService } from "./core/http-client";
 import { MatButtonModule } from "@angular/material/button";
+import { CommonModule } from "@angular/common";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,7 +21,8 @@ export const appConfig: ApplicationConfig = {
       //         pathMatch: 'full',
       //     }
       // ]))
-      HttpClientService,
+      // HttpClientService,
+      CommonModule,
       // ...materialImports
       MatButtonModule
   ],

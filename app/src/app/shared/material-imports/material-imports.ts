@@ -14,6 +14,14 @@ import { HttpClientService } from "../../core/http-client";
 // и другие модули
 
 export const materialImports = [
-    MatExpansionModule, MatDivider, MatIcon, MatButton, MatAnchor, MatIconButton, MatFabButton, MatMiniFabButton, MatFabAnchor,MatExpansionPanel,
-
+    MatExpansionModule,
+    MatDivider,
+    MatIcon,
+    MatButton,
+    MatAnchor,
+    MatIconButton,
+    MatFabButton,
+    MatMiniFabButton,
+    MatFabAnchor,
+    MatExpansionPanel,
 ];
