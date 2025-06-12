@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Async vs Defer</title>
-
-<!--  <script src="async.js" async></script>-->
-<!--  <script src="defer.js" defer></script>-->
-  <script src="main.js" defer></script>
-</head>
+<html>
 <body>
-<!--<script>-->
-<!--    for (let i = 0; i < 10000; i++) {-->
-<!--        console.log(i);-->
-<!--    }-->
-<!--</script>-->
-<h1 id="title">Привет!</h1>
+<h1>The iframe element</h1>
 
-<!--<script>-->
-<!--    console.log("🔥 Скрипт внутри <body> выполнен");-->
-<!--    document.getElementById("title").style.color = "blue";-->
-<!--</script>-->
+<iframe  id="myIframe" src="inner.html" title="W3Schools Free Online Web Tutorials">
+</iframe>
+
+<script>
+    var globalVar = 'hello';
+    const iframe = document.getElementById('myIframe');
+iframe.onload = () => {
+
+    var iframe = document.getElementById('myIframe');
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    console.log(iframeDoc);
+    var style = iframeDoc.createElement('style');
+    style.textContent = `
+    body {
+    display: none;
+      background-color: lightblue;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: red;
+    }
+  `;
+    iframeDoc.head.appendChild(style);
+};
+</script>
 </body>
 </html>
