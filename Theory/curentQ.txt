@@ -13,8 +13,8 @@ HTML/CSS
 +Изучить линтеры для CSS
 
 JS/TS
-Освоить LexicalEnvironment и цепочки промисов
-Разобраться в методах Promise и event loop (микро/макрозадачи)
++Освоить LexicalEnvironment и цепочки промисов
++Разобраться в методах Promise и event loop (микро/макрозадачи)
 
 Углубить понимание type guards,
 Generics
@@ -23,7 +23,7 @@ Generics
 
 Angular
 Освоить понятие модуля и архитектуру Angular-приложений
-Разобраться в декораторах (@Self, @Optional, @Host, @SkipSelf)
++Разобраться в декораторах (@Self, @Optional, @Host, @SkipSelf)
 Изучить lazy load и resolver в роутинге
 Понять иерархию сервисов и ViewEncapsulation
 Понять принципы работы ChangeDetectorRef
