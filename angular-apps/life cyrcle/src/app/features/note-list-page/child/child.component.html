@@ -1,6 +1,7 @@
 <h2 #title>Lifecycle Demo Component</h2>
 <p>Input value: {{ inputValue }}</p>
 <p>Signal value: {{ count() }}</p>
+<p>меняется по интервалу {{intervalValue}}</p>
 <button (click)="increment()">Increment signal</button>
 <button (click)="changeInput()">Change Input</button>
 <ng-content *ngIf="true"></ng-content>

@@ -4,7 +4,7 @@ import { materialImports } from "../../shared/material-imports/material-imports"
 import { MatExpansionPanel } from "@angular/material/expansion";
 import { untracked } from "@angular/core/primitives/signals";
 import {
-    ChangeDetectionStrategy,
+    ChangeDetectionStrategy, ChangeDetectorRef,
     Component,
     computed,
     effect,
@@ -30,7 +30,7 @@ import { interval } from "rxjs";
     templateUrl: './note-list-page.component.html',
     styleUrl: './note-list-page.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class NoteListPageComponent {
@@ -41,17 +41,18 @@ export class NoteListPageComponent {
     public count = signal(0);
     public actionValue = signal(0);
 
-    constructor(@SkipSelf() private httpService: HttpClientService,) {
+    constructor(@SkipSelf() private httpService: HttpClientService, private cdr: ChangeDetectorRef) {
         console.log(this.httpService.param);
         // const source$ = interval(1000); // создаёт Observable, выдающий числа каждую секунду
         // source$.subscribe((value) => {
         //     // this.incValueParent();
         // });
         setInterval(() => {
-            this.incValueParent()
+            // this.incValueParent()
             // this.timer++
             // this.inc();
-            // this.action()
+            this.cdr.detectChanges();
+            this.action()
         }, 1000)
     }
 
@@ -63,7 +64,7 @@ export class NoteListPageComponent {
     }
 
     action() {
-        this.actionValue.update((v) => v + 1)
+        this.parentValue++;
     }
 
     incValueParent() {

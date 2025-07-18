@@ -32,6 +32,7 @@ import { CommonModule } from "@angular/common";
 export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    AfterContentInit,    AfterContentChecked,    AfterViewInit,    AfterViewChecked,    OnDestroy {
 
     @Input() inputValue = 0;
+    intervalValue = 0;
     @Output() destroyed = new EventEmitter<void>();
     @ViewChild('title') titleRef!: ElementRef<HTMLHeadingElement>;
 
@@ -39,6 +40,9 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
     private readonly cleanupEffect: EffectRef;
 
     constructor(private cdr: ChangeDetectorRef,) {
+        setInterval(() => {
+            this.intervalValue++
+        }, 2000)
         console.log('1. Constructor called');
 
         // Effect для отслеживания изменений сигнала
