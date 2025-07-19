@@ -20,11 +20,11 @@ import {
     signal,
     effect, EffectRef, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
-import { CommonModule } from "@angular/common";
+
 
 @Component({
     selector: 'app-child',
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './child.component.html',
     styleUrl: './child.component.scss',
     changeDetection: ChangeDetectionStrategy.Default,
@@ -40,30 +40,27 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
     private readonly cleanupEffect: EffectRef;
 
     constructor(private cdr: ChangeDetectorRef,) {
-        setInterval(() => {
-            this.intervalValue++
-        }, 2000)
         console.log('1. Constructor called');
 
         // Effect для отслеживания изменений сигнала
         this.cleanupEffect = effect(() => {
-            console.log('Signal changed:', this.count());
+            // console.log('Signal changed:', this.count());
         });
-
-        // Однократный эффект после следующего рендеринга
-        afterNextRender(() => {
-            console.log('afterNextRender: Component rendered first time');
-        });
-
-        // Эффект после каждого рендеринга
-        afterRender(() => {
-            console.log('afterRender: Component rendered');
-        });
+        //
+        // // Однократный эффект после следующего рендеринга
+        // afterNextRender(() => {
+        //     console.log('afterNextRender: Component rendered first time');
+        // });
+        //
+        // // Эффект после каждого рендеринга
+        // afterRender(() => {
+        //     console.log('afterRender: Component rendered');
+        // });
 
         // Альтернативный эффект рендеринга
-        afterRenderEffect(() => {
-            console.log('afterRenderEffect: Runs after render');
-        });
+        // afterRenderEffect(() => {
+        //     console.log('afterRenderEffect: Runs after render');
+        // });
     }
 
     ngOnChanges(changes: SimpleChanges) {

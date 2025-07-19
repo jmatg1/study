@@ -1,12 +1,13 @@
-
-
-
-<button  (click)="action()">Изменить зачение в компонете NoteListPage {{parentValue}}</button>
-<!--<button  (click)="incValueParent()">Change only parent value {{parentValue}}</button>-->
-<!--<button  (click)="childAlive.set(false)">Destroy child</button>-->
-<!--<button  (click)="childAlive.set(true)">Render child</button>-->
-<!--<button  (click)="inc()">Increment child content</button>-->
+<button  (click)="incValueParent()">отправить ребенку новое значение по {{'@'}} input {{parentValue}}</button>
+<button  (click)="childAlive.set(false)">Destroy child</button>
+<button  (click)="childAlive.set(true)">Render child</button>
+<button  (click)="inc()">Increment child content</button>
 <!--{{ timer }}-->
-<app-child
-  [inputValue]="parentValue"
-  (destroyed)="onChildDestroyed()"><p>Projected content {{count()}}</p></app-child>
+@if (childAlive()) {
+
+  <app-child
+    [inputValue]="parentValue"
+    (destroyed)="onChildDestroyed()"><p>Projected content {{count()}}</p></app-child>
+} @else {
+  ребенок мертв
+}

@@ -42,29 +42,14 @@ export class NoteListPageComponent {
     public actionValue = signal(0);
 
     constructor(@SkipSelf() private httpService: HttpClientService, private cdr: ChangeDetectorRef) {
-        console.log(this.httpService.param);
-        // const source$ = interval(1000); // создаёт Observable, выдающий числа каждую секунду
-        // source$.subscribe((value) => {
-        //     // this.incValueParent();
-        // });
-        setInterval(() => {
-            // this.incValueParent()
-            // this.timer++
-            // this.inc();
-            this.cdr.detectChanges();
-            this.action()
-        }, 1000)
     }
 
     onChildDestroyed() {
-        console.log('Parent: child component destroyed');
-    }
-    inc() {
-        this.count.update((v) => v + 1)
+        console.log('Дочерний компонент был уничтожен');
     }
 
-    action() {
-        this.parentValue++;
+    inc() {
+        this.count.update((v) => v + 1)
     }
 
     incValueParent() {
