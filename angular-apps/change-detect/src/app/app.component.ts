@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, signal } from '@angular/core';
 import { OneComponent } from "./features/one/one.component";
 import { TwoComponent } from "./features/two/two.component";
-import { GrandParentComponent } from "./features/components";
 
 @Component({
     selector: 'app-root',
     imports: [
         OneComponent,
         TwoComponent,
-        GrandParentComponent
     ],
     providers: [],
     templateUrl: './app.component.html',

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-five',
@@ -7,6 +7,11 @@ import { ChangeDetectorRef, Component } from '@angular/core';
   styleUrl: './five.component.scss'
 })
 export class FiveComponent {
+    @Input() set newValue(value: number) {
+        this.value = value;
+        this.val.set(value)
+    }
+    val = signal(0)
     value = 0;
     constructor(public cdr: ChangeDetectorRef) {
         setInterval(() => {

@@ -15,6 +15,8 @@ import { SixComponent } from "../six/six.component";
 })
 export class TwoComponent {
     value = 0;
+    newValue = 0;
+
     constructor(public cdr: ChangeDetectorRef) {
         setInterval(() => {
             this.value++;
@@ -35,4 +37,13 @@ export class TwoComponent {
             console.log('detectChanges OneComponent');
         }, 5000)
     }
+
+    sendValue() {
+        setTimeout(() =>{
+            this.newValue = Math.random();
+            console.log('передали число ' + this.newValue);
+        }, 5000)
+    }
+
+    protected readonly Math = Math;
 }

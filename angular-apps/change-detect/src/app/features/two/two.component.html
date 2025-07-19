@@ -3,9 +3,10 @@
 
 <button (click)="markForCheck()">запустить через 5 сек markForCheck </button>
 <button (click)="detectChanges()">запустить через 5 сек detectChanges</button>
+<button (click)="sendValue()">передать компоненту five ззначение через input</button>
 <ul>
   <li>
-    <app-five></app-five>
+    <app-five [newValue]="newValue"></app-five>
   </li>
   <li>
     <app-six></app-six>

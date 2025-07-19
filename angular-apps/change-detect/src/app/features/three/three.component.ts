@@ -13,4 +13,21 @@ export class ThreeComponent {
             this.value++;
         }, 1000)
     }
+    ngDoCheck(): void {
+        console.log('app-three   ngDoCheck');
+    }
+    asd(){}
+    markForCheck() {
+        setTimeout(() => {
+            this.cdr.markForCheck();
+            console.log('markForCheck OneComponent');
+        }, 5000)
+    }
+
+    detectChanges() {
+        setTimeout(() => {
+            this.cdr.detectChanges();
+            console.log('detectChanges OneComponent');
+        }, 5000)
+    }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit } from '@angular/core';
 import { ThreeComponent } from "../three/three.component";
 import { FourComponent } from "../four/four.component";
 
@@ -12,12 +12,16 @@ import { FourComponent } from "../four/four.component";
   styleUrl: './one.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OneComponent {
+export class OneComponent implements DoCheck  {
     value = 0;
     constructor(public cdr: ChangeDetectorRef) {
         setInterval(() => {
             this.value++;
         }, 1000)
+    }
+
+    ngDoCheck(): void {
+        console.log('app-one ngDoCheck');
     }
 
     markForCheck() {
