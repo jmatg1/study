@@ -7,16 +7,21 @@ import { ChangeDetectorRef, Component, Input, signal } from '@angular/core';
   styleUrl: './five.component.scss'
 })
 export class FiveComponent {
-    @Input() set newValue(value: number) {
-        this.value = value;
-        this.val.set(value)
-    }
+    @Input('newValue') newValue: number | undefined;
     val = signal(0)
     value = 0;
     constructor(public cdr: ChangeDetectorRef) {
         setInterval(() => {
             this.value++;
+            // this.val.update(value1 => value1 + 1);
         }, 1000)
+    }
+
+    ngOnChanges(){
+        console.log('ngOnChange');
+    }
+    ngDoCheck(){
+        console.log('ngDoCheck');
     }
     markForCheck() {
         setTimeout(() => {

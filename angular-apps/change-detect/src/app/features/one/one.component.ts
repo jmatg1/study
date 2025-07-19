@@ -10,7 +10,7 @@ import { FourComponent } from "../four/four.component";
     ],
   templateUrl: './one.component.html',
   styleUrl: './one.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class OneComponent implements DoCheck  {
     value = 0;

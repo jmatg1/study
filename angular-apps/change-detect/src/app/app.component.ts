@@ -12,7 +12,7 @@ import { TwoComponent } from "./features/two/two.component";
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent {
 

@@ -11,7 +11,7 @@ import { SixComponent } from "../six/six.component";
     ],
   templateUrl: './two.component.html',
   styleUrl: './two.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.Default
 })
 export class TwoComponent {
     value = 0;
@@ -42,6 +42,7 @@ export class TwoComponent {
         setTimeout(() =>{
             this.newValue = Math.random();
             console.log('передали число ' + this.newValue);
+            this.cdr.detectChanges();
         }, 5000)
     }
 

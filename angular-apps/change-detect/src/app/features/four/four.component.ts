@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
   imports: [],
   templateUrl: './four.component.html',
   styleUrl: './four.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.Default
 })
 export class FourComponent {
     value = 0;
