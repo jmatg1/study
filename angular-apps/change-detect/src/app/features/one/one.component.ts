@@ -1,19 +1,22 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit } from '@angular/core';
 import { ThreeComponent } from "../three/three.component";
 import { FourComponent } from "../four/four.component";
+import { UnlessDirective } from "../../shared/directive/test.directive";
 
 @Component({
-  selector: 'app-one',
+    selector: 'app-one',
     imports: [
         ThreeComponent,
-        FourComponent
+        FourComponent,
+        UnlessDirective
     ],
-  templateUrl: './one.component.html',
-  styleUrl: './one.component.scss',
-    changeDetection: ChangeDetectionStrategy.Default,
+    templateUrl: './one.component.html',
+    styleUrl: './one.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OneComponent implements DoCheck  {
+export class OneComponent implements DoCheck {
     value = 0;
+
     constructor(public cdr: ChangeDetectorRef) {
         setInterval(() => {
             this.value++;

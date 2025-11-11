@@ -18,8 +18,10 @@ import {
     afterRender,
     afterRenderEffect,
     signal,
-    effect, EffectRef, ChangeDetectionStrategy, ChangeDetectorRef
+    effect, EffectRef, ChangeDetectionStrategy, ChangeDetectorRef, input
 } from '@angular/core';
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { interval } from "rxjs";
 
 
 @Component({
@@ -27,16 +29,17 @@ import {
     imports: [],
     templateUrl: './child.component.html',
     styleUrl: './child.component.scss',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    AfterContentInit,    AfterContentChecked,    AfterViewInit,    AfterViewChecked,    OnDestroy {
-
-    @Input() inputValue = 0;
+    private untilDestroyed = takeUntilDestroyed();
+    inputValue = input(0);
     intervalValue = 0;
     @Output() destroyed = new EventEmitter<void>();
     @ViewChild('title') titleRef!: ElementRef<HTMLHeadingElement>;
 
-    count = signal(0);
+    count = signal<number[]>([]);
+    s = signal<any>({d: 'dvalue'});
     private readonly cleanupEffect: EffectRef;
 
     constructor(private cdr: ChangeDetectorRef,) {
@@ -44,7 +47,7 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
 
         // Effect для отслеживания изменений сигнала
         this.cleanupEffect = effect(() => {
-            // console.log('Signal changed:', this.count());
+            console.log('Signal changed:', this.count());
         });
         //
         // // Однократный эффект после следующего рендеринга
@@ -68,7 +71,6 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
     }
 
     ngOnInit() {
-
         this.cdr.detectChanges();
         console.log('3. ngOnInit - Component initialized');
     }
@@ -101,10 +103,11 @@ export class ChildComponent implements OnChanges,    OnInit,    DoCheck,    Afte
     }
 
     increment() {
-        this.count.update(v => v + 1);
+        this.s.set({s: 'svalue'});
+        this.count.update(v => [...v, 1]);
     }
 
     changeInput() {
-        this.inputValue += 1;
+        // this.inputValue.update(v => v +1);
     }
 }
