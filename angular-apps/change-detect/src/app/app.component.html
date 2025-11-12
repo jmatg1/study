@@ -1,9 +1,13 @@
 <a>Root OnPush {{value}}</a>
 <ul>
   <li>
-    <app-one></app-one>
+    <app-one [(value2)]="asd"></app-one>
   </li>
   <li>
     <app-two></app-two>
   </li>
 </ul>
+
+<a routerLink="home">home</a><br>
+<a routerLink="dashboard">dashboard</a>
+<router-outlet></router-outlet>

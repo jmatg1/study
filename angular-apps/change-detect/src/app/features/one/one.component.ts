@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    DoCheck,
+    input, model,
+    OnInit,
+    SimpleChanges
+} from '@angular/core';
 import { ThreeComponent } from "../three/three.component";
 import { FourComponent } from "../four/four.component";
 import { UnlessDirective } from "../../shared/directive/test.directive";
@@ -14,8 +22,9 @@ import { UnlessDirective } from "../../shared/directive/test.directive";
     styleUrl: './one.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OneComponent implements DoCheck {
+export class OneComponent implements DoCheck, OnInit {
     value = 0;
+    value2 = model(2);
 
     constructor(public cdr: ChangeDetectorRef) {
         setInterval(() => {
@@ -23,6 +32,13 @@ export class OneComponent implements DoCheck {
         }, 1000)
     }
 
+    ngOnInit(): void {
+        console.log('ngOnInit', this.value2());
+    }
+    
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log('ngOnChanges');
+    }
     ngDoCheck(): void {
         console.log('app-one ngDoCheck');
     }
