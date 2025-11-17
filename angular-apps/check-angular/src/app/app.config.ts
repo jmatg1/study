@@ -5,14 +5,10 @@ import {
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 import { provideRouter, Routes } from "@angular/router";
-import { AppComponent } from "./app.component";
-import { OneComponent } from "./features/one/one.component";
-import { authGuard } from "./auth.guard";
-import { SixComponent } from "./features/six/six.component";
-import { deactGuard } from "./deact.guard";
+import { ViewQueriesComponent } from "./features/view-queries/view-queries.component";
 
 const routes: Routes = [
-    { path: 'viechild', component: SixComponent, canActivate: [authGuard], canDeactivate: [deactGuard] },
+    { path: 'view-queries', component: ViewQueriesComponent },
     { path: '**', redirectTo: '' },
 ];
 
