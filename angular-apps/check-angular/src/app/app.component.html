@@ -2,15 +2,11 @@
   <button mat-button routerLink="" routerLinkActive="active">
     Главная
   </button>
-  <button mat-button routerLink="view-queries" routerLinkActive="active">
-    View queries
-  </button>
-  <button matButton routerLink="contact" routerLinkActive="active">
-    Контакты
-  </button>
-  <button mat-button routerLink="settings" routerLinkActive="active">
-    Настройки
-  </button>
+  @for (item of link; track item.path) {
+    <button mat-button [routerLink]="item.path" routerLinkActive="active">
+      {{ item.path }}
+    </button>
+  }
 </mat-toolbar>
 
 <main class="p-4">

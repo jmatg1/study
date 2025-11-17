@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from "@angular/rou
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatIconModule } from '@angular/material/icon';
+import { routes } from "./app.config";
 
 @Component({
     selector: 'app-root',
@@ -20,4 +21,5 @@ import { MatIconModule } from '@angular/material/icon';
     changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent {
+    link = routes.slice(0,-1)
 }
