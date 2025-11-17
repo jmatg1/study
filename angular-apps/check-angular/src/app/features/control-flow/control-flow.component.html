@@ -1,0 +1,11 @@
+<p>control-flow works!</p>
+<button (click)="onChange()">Change values</button> <br>
+if<br>
+@if ($imPipi | async; as status) {
+  span {{status}}<br>
+}
+
+for<br>
+@for (item of $array | async; track $index) {
+  <span>{{item}}</span><br>
+}
