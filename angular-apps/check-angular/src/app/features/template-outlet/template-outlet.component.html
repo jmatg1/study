@@ -1,0 +1,10 @@
+<ng-template #myFragment>
+  <p>Я появился через ngTemplateOutlet</p>
+</ng-template>
+<ng-template #myFragment1>
+  <p>Я появился через createEmbeddedView</p>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="myFragment"></ng-container>
+
+<button (click)="onCreate()">createEmbeddedView</button>
